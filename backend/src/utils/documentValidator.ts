@@ -12,7 +12,7 @@ export interface DocumentValidationResult {
 export interface DocumentInput {
   name: string;
   type: string;
-  status?: 'VALID' | 'COMPLETE' | 'UNCLEAR' | 'INCOMPLETE' | 'MISMATCHED';
+  status?: 'VALID' | 'COMPLETE' | 'UNCLEAR' | 'INCOMPLETE' | 'MISMATCHED' | 'MISSING';
 }
 
 /**
