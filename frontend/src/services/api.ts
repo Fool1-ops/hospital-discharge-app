@@ -2,7 +2,7 @@
 
 interface ApiOptions {
   method?: string;
-  body?: any;
+  body?: Record<string, unknown>;
   headers?: Record<string, string>;
 }
 
@@ -75,7 +75,7 @@ export const authApi = {
   login: (email: string, password: string) => 
     fetchApi('/api/auth/login', { method: 'POST', body: { email, password } }),
   
-  register: (userData: any) => 
+  register: (userData: Record<string, unknown>) => 
     fetchApi('/api/auth/register', { method: 'POST', body: userData }),
   
   getProfile: () => 
@@ -84,7 +84,7 @@ export const authApi = {
 
 // Claims API
 export const claimsApi = {
-  createClaim: (claimData: any) => 
+  createClaim: (claimData: Record<string, unknown>) => 
     fetchApi('/api/claims', { method: 'POST', body: claimData }),
   
   getClaim: (id: string) => 

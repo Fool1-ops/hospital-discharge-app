@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
       }
       
       return NextResponse.json({ summary: stdout });
-    } catch (execError: any) {
+    } catch (execError: Error & { message: string }) {
       console.error('Ollama execution error:', execError);
       
       // Check if Ollama is not running
