@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { Claim } from '@/data/mockClaims';
+import { DocumentStatus } from '@/types/documentTypes';
 import { getStatusColor } from '@/utils/statusHelpers';
 
 interface ValidationResult {

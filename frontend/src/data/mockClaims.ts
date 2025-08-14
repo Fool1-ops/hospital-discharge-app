@@ -2,10 +2,12 @@
  * Mock insurance claim data for frontend development
  */
 
+import { DocumentStatus } from '@/types/documentTypes';
+
 export interface Document {
   name: string;
   type: string;
-  status: 'COMPLETE' | 'UNCLEAR' | 'INCOMPLETE' | 'MISMATCHED';
+  status: DocumentStatus;
 }
 
 export interface Claim {

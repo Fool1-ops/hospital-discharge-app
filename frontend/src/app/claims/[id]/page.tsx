@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { Claim } from '@/data/mockClaims';
+import { DocumentStatus } from '@/types/documentTypes';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { getStatusColor } from '@/utils/statusHelpers';
 
@@ -156,7 +157,7 @@ export default function ClaimDetailsPage() {
       const result = await validateClaim(claim!);
       
       // If validation fails, show error and don't submit
-      if (result.status === 'FAIL') {
+      if (result && result.status === 'FAIL') {
         setError('Cannot submit claim with validation issues. Please fix the issues first.');
         setShowValidationModal(true);
         return;

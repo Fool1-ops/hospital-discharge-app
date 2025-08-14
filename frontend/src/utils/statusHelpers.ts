@@ -2,7 +2,9 @@
  * Utility functions for handling status colors and display
  */
 
-type StatusType = 'PASS' | 'FAIL' | 'COMPLETE' | 'MISSING' | 'UNCLEAR' | 'MISMATCHED' | 'INCOMPLETE';
+import { DocumentStatus } from '@/types/documentTypes';
+
+type StatusType = 'PASS' | 'FAIL' | DocumentStatus | 'MISSING';
 
 /**
  * Returns the appropriate Tailwind CSS color class based on status

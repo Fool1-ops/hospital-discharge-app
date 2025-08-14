@@ -1,12 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Claim } from '@/data/mockClaims';
-import { 
-  BarChart, Bar, 
-  PieChart, Pie, Cell, 
-  XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer 
-} from 'recharts';
+import { mockClaims, Claim } from '@/data/mockClaims';
+import { DocumentStatus } from '@/types/documentTypes';
+import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 interface AnalyticsData {
   totalClaims: number;
@@ -229,7 +226,7 @@ export default function AnalyticsPage() {
                     fill="#8884d8"
                     dataKey="count"
                     nameKey="status"
-                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                    label={({ name, percent }) => `${name}: ${(percent ? (percent * 100).toFixed(0) : 0)}%`}
                   >
                     {analyticsData.claimsByStatus.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.status === 'PASS' ? COLORS.pass : COLORS.fail} />

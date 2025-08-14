@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Claim } from '@/data/mockClaims';
-import { getStatusColor } from '@/utils/statusHelpers';
+import { DocumentStatus } from '@/types/documentTypes';
 
 export default function ClaimsPage() {
   const router = useRouter();

@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import { DocumentStatus } from '@/types/documentTypes';
 
 interface DocumentInput {
   name: string;
   type: string;
-  status?: 'VALID' | 'UNCLEAR' | 'INCOMPLETE' | 'MISMATCHED';
+  status?: DocumentStatus | 'VALID';
 }
 
 interface ValidationResult {

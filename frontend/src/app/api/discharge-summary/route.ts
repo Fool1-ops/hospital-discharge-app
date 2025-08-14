@@ -31,13 +31,16 @@ export async function POST(request: NextRequest) {
       }
       
       return NextResponse.json({ summary: stdout });
-    } catch (execError: Error & { message: string }) {
+    } catch (execError: unknown) {
       console.error('Ollama execution error:', execError);
       
       // Check if Ollama is not running
-      if (execError.message.includes('command not found') || 
-          execError.message.includes('not recognized') ||
-          execError.message.includes('connection refused')) {
+      const error = execError as Error;
+      const errorMessage = error.message || 'Unknown error';
+      
+      if (errorMessage.includes('command not found') || 
+          errorMessage.includes('not recognized') ||
+          errorMessage.includes('connection refused')) {
         return NextResponse.json(
           { error: 'Ollama is not running. Please start Ollama locally.' },
           { status: 500 }
@@ -45,7 +48,7 @@ export async function POST(request: NextRequest) {
       }
       
       return NextResponse.json(
-        { error: 'Failed to generate discharge summary', details: execError.message },
+        { error: 'Failed to generate discharge summary', details: errorMessage },
         { status: 500 }
       );
     }
