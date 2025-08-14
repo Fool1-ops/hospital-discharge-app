@@ -1,4 +1,5 @@
 import { DocumentType } from './documentChecklist';
+import { DocumentStatus } from '../types/documentTypes';
 
 // Define the document validation response structure
 export interface DocumentValidationResult {
@@ -12,7 +13,7 @@ export interface DocumentValidationResult {
 export interface DocumentInput {
   name: string;
   type: string;
-  status?: 'VALID' | 'COMPLETE' | 'UNCLEAR' | 'INCOMPLETE' | 'MISMATCHED' | 'MISSING';
+  status?: DocumentStatus;
 }
 
 /**

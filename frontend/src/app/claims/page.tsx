@@ -141,14 +141,17 @@ export default function ClaimsPage() {
 
 function getStatusColor(status: string): string {
   switch (status) {
+    case 'PASS':
     case 'COMPLETE':
-      return 'bg-green-100 text-green-800';
-    case 'UNCLEAR':
-      return 'bg-yellow-100 text-yellow-800';
+      return 'bg-green-100 text-green-800 border border-[#16a34a]';
+    case 'FAIL':
+    case 'MISSING':
     case 'INCOMPLETE':
-      return 'bg-orange-100 text-orange-800';
+      return 'bg-red-100 text-red-800 border border-[#dc2626]';
+    case 'UNCLEAR':
+      return 'bg-yellow-100 text-yellow-800 border border-[#facc15]';
     case 'MISMATCHED':
-      return 'bg-red-100 text-red-800';
+      return 'bg-orange-100 text-orange-800 border border-[#f97316]';
     default:
       return 'bg-gray-100 text-gray-800';
   }
